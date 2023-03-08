@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, removeProduct } from "../Data/Slices/ProductsSlices";
 import Swal from 'sweetalert2'
 import FormaterPrice from "../Data/FormaterCurrence";
+import { motion } from "framer-motion";
+
+
 const Product = (props) => {
     const { product } = props
     const loc = `/product/${product.id}`
@@ -35,8 +38,13 @@ const Product = (props) => {
     }))
     const [countProduct, setCountProduct] = useState(1)
     return (
-      <>
-        <Card style={{ width: "18rem" }}>
+
+      <Card style={{ width: "18rem" }}>
+              <motion.div
+        initial={{ x: "-100vw", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.4, damping: 50 }}
+      >
           <div className="fathere-img d-flex overflow-hidden">
             <Card.Img
               className="w-50 m-auto "
@@ -106,8 +114,8 @@ const Product = (props) => {
               </Link>
             </div>
           </Card.Body>
+          </motion.div>
         </Card>
-      </>
     );
 }
 

@@ -5,6 +5,8 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Product from '../Components/Product';
+import { motion } from "framer-motion";
+
 const Home = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -31,7 +33,12 @@ const Home = () => {
     
     return (
       <>
-        <div className="App mt-2 d-flex container">
+        <motion.div
+          initial={{ x: "-100vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.4, damping: 50 }}
+          className="App mt-2 d-flex container"
+        >
           <input
             placeholder="Searche"
             type="text"
@@ -46,7 +53,7 @@ const Home = () => {
               filtration
             </button>
           </div>
-        </div>
+        </motion.div>
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Filter</Offcanvas.Title>
